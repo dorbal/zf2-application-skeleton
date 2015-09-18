@@ -1,0 +1,34 @@
+server {
+    server_name localhost;
+
+    root {BASE_DIR}/public;
+
+    access_log {BASE_DIR}/data/logs/nginx-access.log;
+    error_log {BASE_DIR}/data/logs/nginx-error.log;
+
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+        index index.html index.php;
+    }
+
+    location /protected/ {
+        internal;
+        alias {BASE_DIR}/protected/;
+    }
+
+    location /assets/ {
+        expires 1y;
+        rewrite ^/assets/(v[0-9]+)/(.*)$ /assets/$2 break;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+        # With php5-fpm:
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+}

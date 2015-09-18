@@ -1,0 +1,11 @@
+*.swp
+*~
+*.old
+
+composer.phar
+composer.lock
+vendor
+/nbproject/private/
+
+module/Sandbox
+public/public-sandbox
