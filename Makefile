@@ -26,7 +26,6 @@ dev: clear-config module/Sandbox
 
 test:
 	$(PHP) vendor/bin/phpunit --configuration module/Application/test/phpunit.xml --verbose --coverage-html data/tmp/coverage/application --coverage-text;
-	$(PHP) vendor/bin/phpunit --configuration module/SimpleModel/test/phpunit.xml --verbose --coverage-html data/tmp/coverage/simple-model --coverage-text;
 
 prod: clear-config
 	rm module/Sandbox -rf;
