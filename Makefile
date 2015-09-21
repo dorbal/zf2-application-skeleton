@@ -25,7 +25,7 @@ dev: clear-config module/Sandbox
 	cp vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist config/autoload/zenddevelopertools.local.php
 
 test:
-	$(PHP) vendor/bin/phpunit --configuration module/Application/test/phpunit.xml --verbose --coverage-html data/tmp/coverage/application --coverage-text;
+	$(PHP) vendor/bin/phpunit --configuration module/Application/tests/phpunit.xml --verbose --coverage-html data/tmp/coverage/application --coverage-text;
 
 prod: clear-config
 	rm module/Sandbox -rf;
